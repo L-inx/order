@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CTVapeHub - Vape Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-image {
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      margin: 20px auto;
+      display: block;
+    }
+    .flavor-button {
+      margin: 5px;
+    }
+    .flavor-button.selected {
+      background-color: #0d6efd;
+      color: white;
+    }
+    .cart-alert {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #198754;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      z-index: 1000;
+    }
+    .cart {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 350px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    .cart h5 {
+      margin-bottom: 15px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .cart-item button {
+      font-size: 0.7rem;
+    }
+    .quantity-input {
+      width: 60px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .cart-total {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CTVapeHub</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-5">Our Vape Collection</h1>
+
+    <div id="products-container">
+
+      <div class="row mb-5 product" data-product="X-VAPE ULTRA" data-price="700">
+        <div class="col-md-6 text-center">
+          <img src="X-ULTRA.jfif" alt="X-VAPE ULTRA" class="product-image">
+        </div>
+        <div class="col-md-6">
+          <h2>X-VAPE ULTRA</h2>
+          <p>High-quality vape delivering the best experience.</p>
+          <strong>Available Flavors:</strong><br>
+          <div class="flavors">
+            <button class="btn btn-outline-primary flavor-button">Grape Ice</button>
+            <button class="btn btn-outline-primary flavor-button">Mango Peach</button>
+            <button class="btn btn-outline-primary flavor-button">Mint Blast</button>
+          </div>
+          <input type="number" class="form-control quantity-input" placeholder="Quantity" min="1" value="1">
+          <p class="mt-3"><strong>Price:</strong> ₱700</p>
+          <button class="btn btn-primary add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="row mb-5 product" data-product="Chillax" data-price="650">
+        <div class="col-md-6 text-center">
+          <img src="Chillax.jfif" alt="Chillax" class="product-image">
+        </div>
+        <div class="col-md-6">
+          <h2>Chillax</h2>
+          <p>Relax and chill with the smoothest vape experience.</p>
+          <strong>Available Flavors:</strong><br>
+          <div class="flavors">
+            <button class="btn btn-outline-success flavor-button">Strawberry Ice</button>
+            <button class="btn btn-outline-success flavor-button">Watermelon Bubblegum</button>
+            <button class="btn btn-outline-success flavor-button">Cool Mint</button>
+          </div>
+          <input type="number" class="form-control quantity-input" placeholder="Quantity" min="1" value="1">
+          <p class="mt-3"><strong>Price:</strong> ₱650</p>
+          <button class="btn btn-primary add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="row mb-5 product" data-product="Elite 8000" data-price="850">
+        <div class="col-md-6 text-center">
+          <img src="Black Elite.jfif" alt="Elite 8000" class="product-image">
+        </div>
+        <div class="col-md-6">
+          <h2>Elite 8000</h2>
+          <p>Elite performance vape with strong flavor hits and smooth clouds.</p>
+          <strong>Available Flavors:</strong><br>
+          <div class="flavors">
+            <button class="btn btn-outline-danger flavor-button">Yakult Ice</button>
+            <button class="btn btn-outline-danger flavor-button">Mango Gaba</button>
+            <button class="btn btn-outline-danger flavor-button">Peach Ice</button>
+          </div>
+          <input type="number" class="form-control quantity-input" placeholder="Quantity" min="1" value="1">
+          <p class="mt-3"><strong>Price:</strong> ₱850</p>
+          <button class="btn btn-primary add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="row mb-5 product" data-product="Black Elite 12000" data-price="1200">
+        <div class="col-md-6 text-center">
+          <img src="Black Elite V2.jfif" alt="Black Elite 12000" class="product-image">
+        </div>
+        <div class="col-md-6">
+          <h2>Black Elite 12000</h2>
+          <p>Next-generation vape offering ultra-powerful puffs and long battery life.</p>
+          <strong>Available Flavors:</strong><br>
+          <div class="flavors">
+            <button class="btn btn-outline-warning flavor-button">Sweet Forest</button>
+            <button class="btn btn-outline-warning flavor-button">Tangy Plump</button>
+            <button class="btn btn-outline-warning flavor-button">Rainbow Punch</button>
+            <button class="btn btn-outline-warning flavor-button">Sticky Worms</button>
+            <button class="btn btn-outline-warning flavor-button">Yellow Green</button>
+            <button class="btn btn-outline-warning flavor-button">Round Red</button>
+          </div>
+          <input type="number" class="form-control quantity-input" placeholder="Quantity" min="1" value="1">
+          <p class="mt-3"><strong>Price:</strong> ₱1200</p>
+          <button class="btn btn-primary add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="cart" class="cart d-none">
+    <h5>Cart</h5>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cartTotal">Total: ₱0</div>
+  </div>
+
+  <div class="cart-alert" id="cartAlert"></div>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 CTVapeHub. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll('.cart-item').forEach(item => {
+        const price = parseFloat(item.getAttribute('data-price'));
+        const qty = parseInt(item.getAttribute('data-qty'));
+        total += price * qty;
+      });
+      document.getElementById('cartTotal').innerText = 'Total: ₱' + total;
+    }
+
+    document.querySelectorAll('.flavor-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const flavorsDiv = this.parentElement;
+        flavorsDiv.querySelectorAll('.flavor-button').forEach(btn => btn.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const productDiv = this.closest('.product');
+        const productName = productDiv.getAttribute('data-product');
+        const productPrice = parseFloat(productDiv.getAttribute('data-price'));
+        const quantityInput = productDiv.querySelector('.quantity-input');
+        const quantity = parseInt(quantityInput.value);
+        const selectedFlavor = productDiv.querySelector('.flavor-button.selected');
+
+        if (!selectedFlavor) {
+          alert('Please select a flavor first!');
+          return;
+        }
+        if (quantity < 1) {
+          alert('Please enter a valid quantity!');
+          return;
+        }
+
+        const flavor = selectedFlavor.textContent;
+
+        const cartAlert = document.getElementById('cartAlert');
+        cartAlert.innerText = `${productName} (${flavor}) x${quantity} added to cart!`;
+        cartAlert.style.display = 'block';
+        setTimeout(() => {
+          cartAlert.style.display = 'none';
+        }, 3000);
+
+        const cart = document.getElementById('cart');
+        const cartItems = document.getElementById('cart-items');
+
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.setAttribute('data-price', productPrice);
+        cartItem.setAttribute('data-qty', quantity);
+        cartItem.innerHTML = `
+          <span>${productName} (${flavor}) x${quantity}</span>
+          <button class="btn btn-sm btn-danger cancel-btn">Cancel</button>
+        `;
+
+        cartItems.appendChild(cartItem);
+        cart.classList.remove('d-none');
+
+        updateTotal();
+
+        cartItem.querySelector('.cancel-btn').addEventListener('click', function() {
+          cartItem.remove();
+          if (cartItems.children.length === 0) {
+            cart.classList.add('d-none');
+          }
+          updateTotal();
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
